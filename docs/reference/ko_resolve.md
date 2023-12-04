@@ -45,7 +45,7 @@ ko resolve -f FILENAME [flags]
   -f, --filename strings           Filename, directory, or URL to files to use to create the resource
   -h, --help                       help for resolve
       --image-annotation strings   Which annotations (key=value[,key=value]) to add to the OCI manifest.
-      --image-label strings        Which labels (key=value[,key=value]) to add to the image.
+      --image-label stringArray    Which labels (key=value[,key=value]) to add to the image.
       --image-refs string          Path to file where a list of the published image references will be written.
       --image-user string          The default user the image should be run as.
       --insecure-registry          Whether to skip TLS verification on the registry
