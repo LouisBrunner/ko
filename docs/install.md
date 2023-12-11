@@ -10,7 +10,6 @@ $ ARCH=x86_64  # or arm64, i386, s390x
 
 We generate [SLSA3 provenance](https://slsa.dev) using the OpenSSF's [slsa-framework/slsa-github-generator](https://github.com/slsa-framework/slsa-github-generator). To verify our release, install the verification tool from [slsa-framework/slsa-verifier#installation](https://github.com/slsa-framework/slsa-verifier#installation) and verify as follows:
 
-
 ```shell
 $ curl -sSfL "https://github.com/ko-build/ko/releases/download/v${VERSION}/ko_${VERSION}_${OS}_${ARCH}.tar.gz" > ko.tar.gz
 $ curl -sSfL https://github.com/ko-build/ko/releases/download/v${VERSION}/multiple.intoto.jsonl > multiple.intoto.jsonl
@@ -62,7 +61,7 @@ apk add ko
 With Go 1.16+, build and install the latest released version:
 
 ```plaintext
-go install github.com/google/ko@latest
+go install github.com/LouisBrunner/ko@latest
 ```
 
 ### Setup on GitHub Actions

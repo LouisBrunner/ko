@@ -12,7 +12,7 @@ builds:
     flags:
       - -trimpath
     ldflags:
-      - "-s -w -X github.com/google/ko/pkg/commands.Version={{.Version}}"
+      - "-s -w -X github.com/LouisBrunner/ko/pkg/commands.Version={{.Version}}"
     goos:
       - windows
       - linux
@@ -32,12 +32,12 @@ kos:
     main: .
     base_image: golang:latest
     ldflags:
-      - "-s -w -X github.com/google/ko/pkg/commands.Version={{.Version}}"
+      - "-s -w -X github.com/LouisBrunner/ko/pkg/commands.Version={{.Version}}"
     platforms:
       - all
     tags:
-      - '{{ .Tag }}'
-      - '{{ .FullCommit }}'
+      - "{{ .Tag }}"
+      - "{{ .FullCommit }}"
       - latest
     sbom: spdx
     bare: true
@@ -62,7 +62,7 @@ archives:
       {{- else }}{{ .Arch }}{{ end }}
 
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
 
 snapshot:
   name_template: "{{ .Tag }}-next"
@@ -72,5 +72,5 @@ changelog:
   use: github
   filters:
     exclude:
-      - '^docs:'
-      - '^test:'
+      - "^docs:"
+      - "^test:"

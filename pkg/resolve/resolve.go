@@ -20,9 +20,9 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/LouisBrunner/ko/pkg/build"
+	"github.com/LouisBrunner/ko/pkg/publish"
 	"github.com/dprotaso/go-yit"
-	"github.com/google/ko/pkg/build"
-	"github.com/google/ko/pkg/publish"
 	"golang.org/x/sync/errgroup"
 	"gopkg.in/yaml.v3"
 )

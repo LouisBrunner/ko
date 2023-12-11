@@ -27,6 +27,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/LouisBrunner/ko/pkg/build"
+	"github.com/LouisBrunner/ko/pkg/commands/options"
+	kotesting "github.com/LouisBrunner/ko/pkg/internal/testing"
 	"github.com/docker/docker/api/types"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
@@ -37,9 +40,6 @@ import (
 	"github.com/google/go-containerregistry/pkg/v1/daemon"
 	"github.com/google/go-containerregistry/pkg/v1/empty"
 	"github.com/google/go-containerregistry/pkg/v1/random"
-	"github.com/google/ko/pkg/build"
-	"github.com/google/ko/pkg/commands/options"
-	kotesting "github.com/google/ko/pkg/internal/testing"
 	"gopkg.in/yaml.v3"
 )
 
@@ -185,13 +185,13 @@ func TestNewBuilder(t *testing.T) {
 	}{
 		{
 			description: "test app with already qualified import path",
-			importpath:  "ko://github.com/google/ko/test",
+			importpath:  "ko://github.com/LouisBrunner/ko/test",
 			bo: &options.BuildOptions{
 				BaseImage:        baseImage,
 				ConcurrentBuilds: 1,
 				Platforms:        []string{"all"},
 			},
-			wantQualifiedImportpath: "ko://github.com/google/ko/test",
+			wantQualifiedImportpath: "ko://github.com/LouisBrunner/ko/test",
 			shouldBuildError:        false,
 		},
 		{
@@ -200,7 +200,7 @@ func TestNewBuilder(t *testing.T) {
 			bo: &options.BuildOptions{
 				BaseImage: baseImage,
 				BuildConfigs: map[string]build.Config{
-					"github.com/google/ko/test": {
+					"github.com/LouisBrunner/ko/test": {
 						ID: "id-can-be-anything",
 						// no easy way to assert on the output, so trigger error to ensure config is picked up
 						Flags: []string{"-invalid-flag-should-cause-error"},
@@ -209,7 +209,7 @@ func TestNewBuilder(t *testing.T) {
 				ConcurrentBuilds: 1,
 				WorkingDirectory: "../..",
 			},
-			wantQualifiedImportpath: "ko://github.com/google/ko/test",
+			wantQualifiedImportpath: "ko://github.com/LouisBrunner/ko/test",
 			shouldBuildError:        true,
 		},
 	}
@@ -241,7 +241,7 @@ func TestNewBuilder(t *testing.T) {
 func TestNewPublisherCanPublish(t *testing.T) {
 	dockerRepo := "registry.example.com/repo"
 	localDomain := "localdomain.example.com/repo"
-	importpath := "github.com/google/ko/test"
+	importpath := "github.com/LouisBrunner/ko/test"
 	tests := []struct {
 		description   string
 		wantImageName string
